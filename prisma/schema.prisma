@@ -1,0 +1,65 @@
+// Hexovate Solutions - AI Image Generator Prisma Schema
+// Enforcing exact DB-level Enums for 4 Image Styles & Generation Statuses
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Strictly Enforced Database Enums
+enum ImageStyle {
+  Anime
+  Realistic
+  Cinematic
+  DigitalArt @map("Digital Art")
+}
+
+enum GenerationStatus {
+  COMPLETED
+  IN_PROGRESS
+  FAILED
+}
+
+// 1. Users Table
+model User {
+  id          String       @id @default(uuid())
+  name        String
+  email       String       @unique
+  password    String
+  dateCreated DateTime     @default(now()) @map("date_created")
+  images      Image[]
+  generations Generation[]
+
+  @@map("users")
+}
+
+// 2. Images Table
+model Image {
+  id          String     @id @default(uuid())
+  userId      String     @map("user_id")
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  prompt      String
+  style       ImageStyle // Strictly enforced DB enum: Anime, Realistic, Cinematic, Digital Art
+  imageLink   String     @map("image_link")
+  dateCreated DateTime   @default(now()) @map("date_created")
+
+  @@map("images")
+}
+
+// 3. Generation Table
+model Generation {
+  id             String           @id @default(uuid())
+  userId         String           @map("user_id")
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  prompt         String
+  style          ImageStyle       // Strictly enforced DB enum: Anime, Realistic, Cinematic, Digital Art
+  numberOfImages Int              @default(1) @map("number_of_images")
+  status         GenerationStatus @default(COMPLETED)
+  dateCreated    DateTime         @default(now()) @map("date_created")
+
+  @@map("generations")
+}
