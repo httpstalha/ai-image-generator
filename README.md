@@ -1,57 +1,113 @@
-# Cerulia AI Image Generator
+<div align="center">
+  <h1>✨ Cerulia AI Image Generator ✨</h1>
+  <p>A professional, modern web application for next-generation AI image generation, background removal, and creative exploration.</p>
+</div>
 
-A professional, modern web application for AI image generation, built with Next.js, React, Tailwind CSS, and NextAuth.
+<br />
 
-## 🚀 Features
+## 🌟 Overview
 
-- **Next-Generation UI/UX**: Premium design aesthetics with modern typography and animations.
-- **Secure Authentication**: Integrated with NextAuth for seamless and secure OAuth authentication.
-- **AI-Powered Image Generation**: Leveraging advanced AI models to generate high-quality images.
-- **Responsive Layout**: Fully optimized for all device sizes.
-- **Performance Focused**: Built on the cutting-edge Next.js App Router for optimal load times and SEO.
+**Cerulia** is an enterprise-grade AI Image Generator built with **Next.js 16 (App Router)** and **React 19**. It leverages powerful multi-model endpoints including **Alibaba Cloud Model Studio (DashScope)** and **Pollinations AI** to bring imaginative text prompts to life across diverse, high-fidelity aesthetic styles.
 
-## 🛠️ Tech Stack
+---
 
-- **Framework**: [Next.js](https://nextjs.org/) (React 19)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
-- **Icons**: [Lucide React](https://lucide.dev/)
+## 🎨 AI Features & Capabilities
+
+### 1. Advanced Image Generation Engine
+Cerulia integrates with cutting-edge text-to-image AI APIs (including **Qwen / Wan2.5-t2i-preview**) to generate stunning images. The platform supports multiple curated art styles, injecting specialized prompt suffixes to ensure breathtaking results.
+
+#### Curated Styles
+| Anime | Realistic | Cinematic | Digital Art |
+|:---:|:---:|:---:|:---:|
+| <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80" width="200" style="border-radius:10px" alt="Anime"/> | <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80" width="200" style="border-radius:10px" alt="Realistic"/> | <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80" width="200" style="border-radius:10px" alt="Cinematic"/> | <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80" width="200" style="border-radius:10px" alt="Digital Art"/> |
+| Vibrant line art & Makoto Shinkai lighting | Photorealistic 8k detail & sharp focus | Dramatic film composition & blockbluster aesthetics | Modern concept art & expressive brush strokes |
+
+### 2. Intelligent Background Removal Tool
+Built-in Canvas API algorithm designed to seamlessly remove backgrounds and generate transparent PNGs (Alpha Channel Extraction) locally within the browser, optimizing user privacy and speed without relying on external APIs.
+
+---
+
+## 🔐 Authentication & Security
+
+The platform utilizes **NextAuth 2.0** for a highly secure, frictionless login experience.
+- **OAuth Providers Support**: Google, Yahoo, and Apple integrations.
+- **Custom Credentials**: Robust email/password authentication system.
+- **Protected Routes**: Middleware and HOCs (AuthGuard) to restrict access to pro features and galleries.
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend & UI
+- **Framework**: Next.js (React 19)
+- **Styling**: Tailwind CSS v4
+- **Icons**: Lucide React
 - **Language**: TypeScript
 
-## ⚙️ Getting Started
+### Backend & Cloud
+- **Authentication**: NextAuth.js
+- **AI Endpoints**: Alibaba Cloud Model Studio (Qwen), Pollinations AI API
+- **State & Storage**: Secure local storage & API proxy routing
 
-### Prerequisites
+---
 
-- Node.js (v18 or higher)
-- npm or yarn or pnpm
+## 🚀 Getting Started
 
-### Installation
+Follow these instructions to run the Cerulia AI Image Generator locally.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/httpstalha/ai-image-generator.git
-   cd ai-image-generator
-   ```
+### 1. Prerequisites
+- **Node.js**: v18.x or higher
+- **Package Manager**: `npm`, `yarn`, or `pnpm`
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### 2. Installation
 
-3. Set up environment variables:
-   Create a `.env.local` file in the root directory and add the necessary environment variables (e.g., NextAuth secret, OAuth credentials, and AI API keys).
+Clone the repository and install dependencies:
 
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
+```bash
+git clone https://github.com/httpstalha/ai-image-generator.git
+cd ai-image-generator
+npm install
+```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+### 3. Environment Variables
+
+Create a `.env.local` file in the root of the project and populate it with your credentials:
+
+```env
+# AI API Keys
+AI_GENERATOR_API_KEY=your_alibaba_qwen_or_pollinations_api_key
+NEXT_PUBLIC_AI_API_KEY=your_public_api_key_if_applicable
+
+# Authentication (NextAuth)
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secure_random_string
+
+# OAuth Providers (Optional)
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+YAHOO_CLIENT_ID=your_yahoo_client_id
+YAHOO_CLIENT_SECRET=your_yahoo_client_secret
+APPLE_CLIENT_ID=your_apple_client_id
+APPLE_CLIENT_SECRET=your_apple_client_secret
+
+# Database (If applicable)
+DATABASE_URL=your_postgresql_database_url
+```
+
+### 4. Running the Development Server
+
+Start the app locally:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to start generating AI art!
+
+---
 
 ## 🤝 Contributing
-
-Contributions are always welcome! Please feel free to submit a Pull Request.
+Contributions, issues, and feature requests are welcome! Feel free to check out the [issues page](https://github.com/httpstalha/ai-image-generator/issues).
 
 ## 📄 License
-
-This project is open-source and available under the MIT License.
+This project is available under the MIT License.
